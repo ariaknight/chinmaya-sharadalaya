@@ -1,0 +1,233 @@
+---
+// Header.astro - Responsive Navigation with Mobile Hamburger Menu
+// Features:
+// - Desktop: Horizontal navigation with Support Us button
+// - Mobile: Slide-out hamburger menu with large touch targets
+// - Sticky positioning for always-accessible navigation
+// - Smooth transitions and accessibility-friendly
+---
+
+<header class="sticky top-0 z-50 bg-maroon-50 shadow-md">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-20">
+      <!-- Logo / Brand -->
+      <div class="flex-shrink-0">
+        <a href="/" class="flex items-center group">
+          <span
+            class="text-2xl font-serif font-bold bg-gradient-to-r from-[#8B2F39] to-[#6B2027] bg-clip-text text-transparent group-hover:opacity-80 transition-opacity"
+          >
+            CMSA
+          </span>
+          <span class="ml-2 hidden sm:inline text-sm font-semibold text-maroon-800">
+            Sharadalaya
+          </span>
+        </a>
+      </div>
+
+      <!-- Desktop Navigation Menu -->
+      <div class="hidden md:flex items-center space-x-1">
+        <a
+          href="/"
+          class="px-4 py-2 rounded-md text-maroon-800 hover:text-[#8B2F39] font-medium transition-colors duration-200"
+        >
+          Home
+        </a>
+        <a
+          href="/temple"
+          class="px-4 py-2 rounded-md text-maroon-800 hover:text-[#8B2F39] font-medium transition-colors duration-200"
+        >
+          Temple
+        </a>
+        <a
+          href="/parivar"
+          class="px-4 py-2 rounded-md text-maroon-800 hover:text-[#8B2F39] font-medium transition-colors duration-200"
+        >
+          Parivar
+        </a>
+        <a
+          href="/jnanashakti"
+          class="px-4 py-2 rounded-md text-maroon-800 hover:text-[#8B2F39] font-medium transition-colors duration-200"
+        >
+          Jnanashakti
+        </a>
+        <a
+          href="/about"
+          class="px-4 py-2 rounded-md text-maroon-800 hover:text-[#8B2F39] font-medium transition-colors duration-200"
+        >
+          About Us
+        </a>
+      </div>
+
+      <!-- Desktop Support Button -->
+      <div class="hidden md:flex items-center ml-6">
+        <a
+          href="/donate"
+          class="px-6 py-2 bg-[#8B2F39] hover:bg-[#6B2027] text-white font-semibold rounded-lg shadow-md transition-all duration-200 transform hover:scale-105 active:scale-95"
+        >
+          Support Us
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Menu Button -->
+      <button
+        id="mobile-menu-button"
+        aria-label="Toggle mobile menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-maroon-800 hover:text-[#8B2F39] hover:bg-maroon-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#8B2F39] transition-colors"
+      >
+        <!-- Hamburger Icon -->
+        <svg
+          id="hamburger-icon"
+          class="h-6 w-6"
+          stroke="currentColor"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"
+          ></path>
+        </svg>
+        <!-- Close Icon (hidden by default) -->
+        <svg
+          id="close-icon"
+          class="h-6 w-6 hidden"
+          stroke="currentColor"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"
+          ></path>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Navigation Menu (Hidden by default) -->
+  <div
+    id="mobile-menu"
+    class="md:hidden hidden overflow-hidden bg-maroon-50 border-t border-maroon-300 shadow-lg"
+  >
+    <div class="px-2 pt-2 pb-3 space-y-1">
+      <a
+        href="/"
+        class="block px-4 py-3 rounded-md text-maroon-800 hover:text-[#8B2F39] hover:bg-maroon-50 font-medium transition-colors text-lg"
+      >
+        Home
+      </a>
+      <a
+        href="/temple"
+        class="block px-4 py-3 rounded-md text-maroon-800 hover:text-[#8B2F39] hover:bg-maroon-50 font-medium transition-colors text-lg"
+      >
+        Temple
+      </a>
+      <a
+        href="/parivar"
+        class="block px-4 py-3 rounded-md text-maroon-800 hover:text-[#8B2F39] hover:bg-maroon-50 font-medium transition-colors text-lg"
+      >
+        Parivar
+      </a>
+      <a
+        href="/jnanashakti"
+        class="block px-4 py-3 rounded-md text-maroon-800 hover:text-[#8B2F39] hover:bg-maroon-50 font-medium transition-colors text-lg"
+      >
+        Jnanashakti
+      </a>
+      <a
+        href="/about"
+        class="block px-4 py-3 rounded-md text-maroon-800 hover:text-[#8B2F39] hover:bg-maroon-50 font-medium transition-colors text-lg"
+      >
+        About Us
+      </a>
+    </div>
+
+    <!-- Mobile Support Button -->
+    <div class="px-2 py-3 border-t border-maroon-300">
+      <a
+        href="/donate"
+        class="block w-full text-center px-4 py-3 bg-[#8B2F39] hover:bg-[#6B2027] text-white font-semibold rounded-lg shadow-md transition-all duration-200 active:scale-95 text-lg"
+      >
+        Support Us
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Mobile Menu Toggle Functionality
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const hamburgerIcon = document.getElementById('hamburger-icon');
+  const closeIcon = document.getElementById('close-icon');
+  const menuLinks = mobileMenu?.querySelectorAll('a');
+
+  // Toggle mobile menu open/close
+  mobileMenuButton?.addEventListener('click', () => {
+    const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+    mobileMenuButton.setAttribute('aria-expanded', String(!isExpanded));
+
+    if (isExpanded) {
+      // Close menu
+      mobileMenu?.classList.add('hidden');
+      hamburgerIcon?.classList.remove('hidden');
+      closeIcon?.classList.add('hidden');
+    } else {
+      // Open menu
+      mobileMenu?.classList.remove('hidden');
+      hamburgerIcon?.classList.add('hidden');
+      closeIcon?.classList.remove('hidden');
+    }
+  });
+
+  // Close mobile menu when a link is clicked
+  menuLinks?.forEach((link) => {
+    link.addEventListener('click', () => {
+      mobileMenuButton?.setAttribute('aria-expanded', 'false');
+      mobileMenu?.classList.add('hidden');
+      hamburgerIcon?.classList.remove('hidden');
+      closeIcon?.classList.add('hidden');
+    });
+  });
+
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', (event) => {
+    const isClickInsideHeader =
+      event.target === mobileMenuButton ||
+      mobileMenuButton?.contains(event.target as Node) ||
+      mobileMenu?.contains(event.target as Node);
+
+    if (!isClickInsideHeader && mobileMenu && !mobileMenu.classList.contains('hidden')) {
+      mobileMenuButton?.setAttribute('aria-expanded', 'false');
+      mobileMenu.classList.add('hidden');
+      hamburgerIcon?.classList.remove('hidden');
+      closeIcon?.classList.add('hidden');
+    }
+  });
+
+  // Close menu on Escape key
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && mobileMenu && !mobileMenu.classList.contains('hidden')) {
+      mobileMenuButton?.setAttribute('aria-expanded', 'false');
+      mobileMenu.classList.add('hidden');
+      hamburgerIcon?.classList.remove('hidden');
+      closeIcon?.classList.add('hidden');
+    }
+  });
+</script>
+
+<style>
+  /* Smooth transition for menu appearance */
+  #mobile-menu {
+    transition: all 0.3s ease-in-out;
+  }
+
+  /* Smooth icon transitions */
+  svg {
+    transition: transform 0.2s ease;
+  }
+
+  button:hover svg {
+    transform: scale(1.1);
+  }
+</style>

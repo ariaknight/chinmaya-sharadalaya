@@ -1,0 +1,374 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = 'Donor Tree: Support CMSA - Chinmaya Mission San Antonio';
+const description = 'Join the Chinmaya Donor Tree and support three pillars of our mission: Jnanashakti, Balavihar programs, and campus expansion.';
+---
+
+<Layout {title} {description}>
+  <!-- Hero Section -->
+  <section class="relative h-96 md:h-[32rem] flex items-center justify-center overflow-hidden bg-gradient-to-r from-[#6B2027] via-[#8B2F39] to-[#A0373D]" style="animation: fadeIn 0.8s ease-in;">
+    <!-- Hero Content -->
+    <div class="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Decorative Top Element -->
+      <div class="mb-6 flex justify-center">
+        <div class="h-1 w-20 bg-gradient-to-r from-[#8B2F39] to-[#A0373D] rounded-full"></div>
+      </div>
+      
+      <!-- Title -->
+      <h1 class="text-5xl md:text-6xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight tracking-wide">
+        Chinmaya Donor Tree
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-lg md:text-xl lg:text-2xl text-[#f5f1ef] font-light mb-6 italic leading-relaxed max-w-3xl mx-auto">
+        Roots in Devotion, Branches in Love
+      </p>
+
+      <!-- Description -->
+      <p class="text-lg md:text-xl text-[#f5f1ef] mb-12 font-light max-w-2xl mx-auto">
+        Support our mission to spread spiritual wisdom
+      </p>
+    </div>
+
+    <!-- Scroll Down Indicator -->
+    <div class="absolute bottom-8 left-0 right-0 flex justify-center">
+      <div class="animate-bounce">
+        <svg class="w-6 h-6 text-[#d4af37]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Decorative Bottom Curve -->
+    <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
+  </section>
+
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <!-- Legacy Story -->
+    <section class="mb-20">
+      <div class="bg-gradient-to-r from-maroon-50 to-burgundy-50 rounded-lg p-12 border-2 border-maroon-300">
+        <h2 class="text-3xl md:text-4xl font-serif font-bold text-maroon-900 mb-6 text-center">
+          The Chinmaya Legacy Tree
+        </h2>
+        <p class="text-lg text-maroon-800 mb-4">
+          A sacred metaphor connects our vision to nature's wisdom. Just as a mighty tree grows from deep roots and extends its branches outward to provide shelter and sustenance, <strong>Chinmaya Mission San Antonio grows through the devotion of donors like you</strong>, rooted in spiritual principles and branching out to serve the community.
+        </p>
+        <p class="text-lg text-maroon-800">
+          Every donation, regardless of size, becomes a vital part of this tree—supporting our roots, nourishing our growth, and extending our blessings to generations to come.
+        </p>
+      </div>
+    </section>
+
+    <!-- The Tree Image -->
+    <section class="mb-20 text-center">
+      <img 
+        src="https://chinmayasa.org/wp-content/uploads/2026/05/CMSALegacyTree_GoldLeaf_16546.jpg"
+        alt="Chinmaya Donor Tree Legacy"
+        class="rounded-lg shadow-xl mx-auto max-w-2xl w-full"
+      />
+    </section>
+
+    <!-- Three Pillars of Growth -->
+    <section class="mb-20">
+      <h2 class="text-3xl md:text-4xl font-serif font-bold text-maroon-900 mb-8 text-center">
+        Three Pillars of Our Mission
+      </h2>
+      <p class="text-lg text-maroon-800 text-center mb-12 max-w-3xl mx-auto">
+        Your contributions support three essential initiatives that strengthen our spiritual community:
+      </p>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Jnanashakti -->
+        <div class="bg-gradient-to-br from-maroon-50 to-burgundy-50 p-8 rounded-lg border-2 border-maroon-300 shadow-lg">
+          <div class="w-16 h-16 bg-maroon-200 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">📚</span>
+          </div>
+          <h3 class="text-xl font-serif font-bold text-maroon-900 mb-3 text-center">Jnanashakti</h3>
+          <p class="text-maroon-800 text-center mb-2 font-semibold">Power of Knowledge</p>
+          <p class="text-maroon-800">
+            Supporting spiritual education, scripture study, philosophical discussions, and wisdom-sharing programs that illuminate the path of seekers.
+          </p>
+        </div>
+
+        <!-- Balavihar -->
+        <div class="bg-gradient-to-br from-maroon-50 to-burgundy-50 p-8 rounded-lg border-2 border-maroon-300 shadow-lg">
+          <div class="w-16 h-16 bg-burgundy-200 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">👨‍👩‍👧‍👦</span>
+          </div>
+          <h3 class="text-xl font-serif font-bold text-maroon-900 mb-3 text-center">Balavihar</h3>
+          <p class="text-maroon-800 text-center mb-2 font-semibold">Children's Programs</p>
+          <p class="text-maroon-800">
+            Nurturing the next generation with cultural values, spiritual teachings, and character development for children ages 4-18.
+          </p>
+        </div>
+
+        <!-- Campus Enhancement -->
+        <div class="bg-gradient-to-br from-maroon-50 to-burgundy-50 p-8 rounded-lg border-2 border-maroon-300 shadow-lg">
+          <div class="w-16 h-16 bg-maroon-200 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🏛️</span>
+          </div>
+          <h3 class="text-xl font-serif font-bold text-maroon-900 mb-3 text-center">Campus Growth</h3>
+          <p class="text-maroon-800 text-center mb-2 font-semibold text-maroon-800">Expansion & Excellence</p>
+          <p class="text-maroon-800">
+            Enhancing our sacred spaces, improving facilities, and expanding capacity to serve our growing spiritual community.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Donation Tiers -->
+    <section class="mb-20">
+      <h2 class="text-3xl md:text-4xl font-serif font-bold text-maroon-900 mb-8 text-center">
+        Ways to Give
+      </h2>
+      <p class="text-lg text-maroon-800 text-center mb-12 max-w-3xl mx-auto">
+        Choose a giving level that reflects your commitment to our mission. Each tier represents a sacred role in nurturing our community's spiritual growth.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Founder's Rock -->
+        <div class="bg-gradient-to-br from-maroon-200 to-maroon-300 p-8 rounded-lg border-3 border-maroon-400 shadow-xl transform hover:scale-105 transition">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-2xl font-serif font-bold text-maroon-900">Founder's Rock</h3>
+            <span class="bg-maroon-400 text-white px-4 py-1 rounded-full text-sm font-bold">Premier</span>
+          </div>
+          <p class="text-4xl font-bold text-maroon-800 mb-2">$25,000+</p>
+          <p class="text-maroon-800 mb-6 border-b border-slate-400 pb-6">
+            The cornerstone of our legacy. Founder's Rock donors receive eternal recognition and exclusive acknowledgment as visionary partners in our mission.
+          </p>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-start">
+              <span class="text-maroon-600 mr-3 font-bold">✓</span>
+              <span class="text-maroon-800">Lifetime recognition on temple inscriptions</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-maroon-600 mr-3 font-bold">✓</span>
+              <span class="text-maroon-800">Dedicated placard in sanctuary</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-maroon-600 mr-3 font-bold">✓</span>
+              <span class="text-maroon-800">Annual special blessing ceremony</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-maroon-600 mr-3 font-bold">✓</span>
+              <span class="text-maroon-800">Invitation to exclusive donor events</span>
+            </li>
+          </ul>
+          <a 
+            href="https://donate.givefullycharity.com"
+            target="_blank"
+            class="w-full inline-flex items-center justify-center bg-maroon-800 hover:bg-maroon-900 text-white font-serif font-bold py-3 px-6 rounded-lg transition"
+          >
+            Make a Gift
+          </a>
+        </div>
+
+        <!-- Gold Leaf -->
+        <div class="bg-gradient-to-br from-maroon-100 to-maroon-100 p-8 rounded-lg border-3 border-maroon-400 shadow-xl transform hover:scale-105 transition">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-2xl font-serif font-bold text-maroon-900">Gold Leaf</h3>
+            <span class="bg-maroon-500 text-white px-4 py-1 rounded-full text-sm font-bold">Valued</span>
+          </div>
+          <p class="text-4xl font-bold text-maroon-800 mb-2">$10,000+</p>
+          <p class="text-maroon-800 mb-6 border-b border-maroon-400 pb-6">
+            Golden recognition for committed supporters who wish to make a significant impact on our spiritual programs.
+          </p>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-start">
+              <span class="text-maroon-600 mr-3 font-bold">✓</span>
+              <span class="text-maroon-800">Recognition in annual donor report</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-maroon-600 mr-3 font-bold">✓</span>
+              <span class="text-maroon-800">Personalized gratitude ceremony</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-maroon-600 mr-3 font-bold">✓</span>
+              <span class="text-maroon-800">Quarterly donor communications</span>
+            </li>
+          </ul>
+          <a 
+            href="https://donate.givefullycharity.com"
+            target="_blank"
+            class="w-full inline-flex items-center justify-center bg-maroon-600 hover:bg-maroon-700 text-white font-serif font-bold py-3 px-6 rounded-lg transition"
+          >
+            Make a Gift
+          </a>
+        </div>
+
+        <!-- Silver Leaf -->
+        <div class="bg-gradient-to-br from-maroon-100 to-maroon-200 p-8 rounded-lg border-3 border-maroon-400 shadow-lg transform hover:scale-105 transition">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-2xl font-serif font-bold text-maroon-900">Silver Leaf</h3>
+            <span class="bg-maroon-500 text-white px-4 py-1 rounded-full text-sm font-bold">Friend</span>
+          </div>
+          <p class="text-4xl font-bold text-maroon-800 mb-2">$5,000+</p>
+          <p class="text-maroon-800 mb-6 border-b border-maroon-400 pb-6">
+            Join our circle of friends dedicated to supporting spiritual growth and community service.
+          </p>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-start">
+              <span class="text-maroon-700 mr-3 font-bold">✓</span>
+              <span class="text-maroon-800">Recognition in newsletter</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-maroon-700 mr-3 font-bold">✓</span>
+              <span class="text-maroon-800">Invitation to donor appreciation event</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-maroon-700 mr-3 font-bold">✓</span>
+              <span class="text-maroon-800">Tax-deductible contribution</span>
+            </li>
+          </ul>
+          <a 
+            href="https://donate.givefullycharity.com"
+            target="_blank"
+            class="w-full inline-flex items-center justify-center bg-maroon-700 hover:bg-maroon-800 text-white font-serif font-bold py-3 px-6 rounded-lg transition"
+          >
+            Make a Gift
+          </a>
+        </div>
+
+        <!-- Bronze Leaf -->
+        <div class="bg-gradient-to-br from-burgundy-100 to-maroon-100 p-8 rounded-lg border-3 border-burgundy-400 shadow-lg transform hover:scale-105 transition">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-2xl font-serif font-bold text-burgundy-900">Bronze Leaf</h3>
+            <span class="bg-burgundy-600 text-white px-4 py-1 rounded-full text-sm font-bold">Supporter</span>
+          </div>
+          <p class="text-4xl font-bold text-burgundy-800 mb-2">$2,500+</p>
+          <p class="text-maroon-800 mb-6 border-b border-burgundy-400 pb-6">
+            Every contribution counts. Your support helps sustain and grow our community spiritual mission.
+          </p>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-start">
+              <span class="text-burgundy-600 mr-3 font-bold">✓</span>
+              <span class="text-maroon-800">Blessing and gratitude card</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-burgundy-600 mr-3 font-bold">✓</span>
+              <span class="text-maroon-800">Tax-deductible contribution</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-burgundy-600 mr-3 font-bold">✓</span>
+              <span class="text-maroon-800">Updates on community impact</span>
+            </li>
+          </ul>
+          <a 
+            href="https://donate.givefullycharity.com"
+            target="_blank"
+            class="w-full inline-flex items-center justify-center bg-burgundy-600 hover:bg-burgundy-700 text-white font-serif font-bold py-3 px-6 rounded-lg transition"
+          >
+            Make a Gift
+          </a>
+        </div>
+      </div>
+
+      <!-- Custom Amount -->
+      <div class="mt-8 text-center">
+        <p class="text-maroon-800 mb-4">
+          Don't see your giving level? Make a <strong>custom donation</strong> of any amount.
+        </p>
+        <a 
+          href="https://donate.givefullycharity.com"
+          target="_blank"
+          class="inline-flex items-center justify-center bg-maroon-700 hover:bg-maroon-800 text-white font-serif font-bold py-3 px-8 rounded-lg transition shadow-lg"
+        >
+          Donate Any Amount
+        </a>
+      </div>
+    </section>
+
+    <!-- Impact Story -->
+    <section class="mb-20 bg-gradient-to-r from-maroon-50 to-burgundy-50 p-12 rounded-lg border-2 border-maroon-300">
+      <h2 class="text-3xl md:text-4xl font-serif font-bold text-maroon-900 mb-6 text-center">
+        Your Impact
+      </h2>
+      <p class="text-lg text-maroon-800 text-center mb-8">
+        When you contribute to the Chinmaya Donor Tree, you're not just giving money—you're investing in:
+      </p>
+      <ul class="space-y-3 max-w-2xl mx-auto">
+        <li class="flex items-start">
+          <span class="text-maroon-600 mr-3 text-2xl">🌱</span>
+          <span class="text-maroon-800"><strong>Spiritual Growth:</strong> Educational programs for seekers of all ages</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-maroon-600 mr-3 text-2xl">🌳</span>
+          <span class="text-maroon-800"><strong>Community Roots:</strong> Balavihar programs nurturing the next generation</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-maroon-600 mr-3 text-2xl">🌿</span>
+          <span class="text-maroon-800"><strong>Sacred Space:</strong> A thriving temple that serves as a spiritual sanctuary</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-maroon-600 mr-3 text-2xl">🌻</span>
+          <span class="text-maroon-800"><strong>Social Service:</strong> Community outreach and charitable initiatives</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- FAQ -->
+    <section class="mb-20">
+      <h2 class="text-3xl md:text-4xl font-serif font-bold text-maroon-900 mb-8 text-center">
+        Frequently Asked Questions
+      </h2>
+      
+      <div class="space-y-6">
+        <details class="bg-maroon-50 p-6 rounded-lg border border-maroon-300 cursor-pointer group">
+          <summary class="flex items-center justify-between font-serif font-bold text-maroon-900 text-lg">
+            <span>Are donations tax-deductible?</span>
+            <span class="group-open:rotate-180 transition">📖</span>
+          </summary>
+          <p class="text-maroon-800 mt-4">
+            Yes! Chinmaya Mission San Antonio is a registered 501(c)(3) nonprofit organization. All donations are tax-deductible to the fullest extent allowed by law.
+          </p>
+        </details>
+
+        <details class="bg-maroon-50 p-6 rounded-lg border border-maroon-300 cursor-pointer group">
+          <summary class="flex items-center justify-between font-serif font-bold text-maroon-900 text-lg">
+            <span>Can I make a donation in honor of someone?</span>
+            <span class="group-open:rotate-180 transition">📖</span>
+          </summary>
+          <p class="text-maroon-800 mt-4">
+            Absolutely! Please contact us at <a href="mailto:info@chinmayasa.org" class="text-maroon-700 hover:text-maroon-900 underline">info@chinmayasa.org</a> to arrange a memorial or honor donation. We'll ensure your loved one is remembered in our prayers.
+          </p>
+        </details>
+
+        <details class="bg-maroon-50 p-6 rounded-lg border border-maroon-300 cursor-pointer group">
+          <summary class="flex items-center justify-between font-serif font-bold text-maroon-900 text-lg">
+            <span>Can I donate monthly or via pledge?</span>
+            <span class="group-open:rotate-180 transition">📖</span>
+          </summary>
+          <p class="text-maroon-800 mt-4">
+            Yes! We offer monthly giving programs and pledge options. Contact our office at <a href="tel:+17262154913" class="text-maroon-700 hover:text-maroon-900 underline">(726) 215-4913</a> to set up recurring contributions.
+          </p>
+        </details>
+
+        <details class="bg-maroon-50 p-6 rounded-lg border border-maroon-300 cursor-pointer group">
+          <summary class="flex items-center justify-between font-serif font-bold text-maroon-900 text-lg">
+            <span>How can I contribute via check or transfer?</span>
+            <span class="group-open:rotate-180 transition">📖</span>
+          </summary>
+          <p class="text-maroon-800 mt-4">
+            We accept donations by check, bank transfer, and other methods. Please call <a href="tel:+17262154913" class="text-maroon-700 hover:text-maroon-900 underline">(726) 215-4913</a> or email <a href="mailto:info@chinmayasa.org" class="text-maroon-700 hover:text-maroon-900 underline">info@chinmayasa.org</a> for details.
+          </p>
+        </details>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="bg-gradient-to-r from-maroon-700 to-burgundy-700 text-white rounded-lg p-12 text-center">
+      <h2 class="text-3xl font-serif font-bold mb-4">Join the Donor Tree</h2>
+      <p class="text-lg mb-8 max-w-2xl mx-auto">
+        Roots in Devotion, Branches in Love. Support the spiritual growth of our community today.
+      </p>
+      <a 
+        href="https://donate.givefullycharity.com"
+        target="_blank"
+        class="inline-flex items-center justify-center bg-maroon-50 text-maroon-800 hover:bg-burgundy-50 font-serif font-bold py-3 px-8 rounded-lg transition shadow-lg"
+      >
+        Make Your Donation Now
+      </a>
+    </section>
+  </div>
+</Layout>

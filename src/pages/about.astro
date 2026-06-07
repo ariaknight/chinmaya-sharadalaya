@@ -1,0 +1,210 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = 'About Us - Chinmaya Mission San Antonio';
+const description = 'Learn about Chinmaya Mission San Antonio (CMSA) - our history, mission, spiritual guidance, and community programs for all ages.';
+---
+
+<Layout {title} {description}>
+  <!-- Hero Section -->
+  <section class="relative h-screen flex items-center justify-center overflow-hidden">
+    <!-- Background Image -->
+    <div
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+      style="background-image: url('https://images.unsplash.com/photo-1545056854-41a855fc8c64?w=1600&h=900&fit=crop');"
+    ></div>
+
+    <!-- Dark Gradient Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-r from-maroon-900/80 via-burgundy-900/70 to-maroon-900/80"></div>
+
+    <!-- Hero Content -->
+    <div class="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Decorative Top Element -->
+      <div class="mb-6 flex justify-center">
+        <div class="h-1 w-20 bg-gradient-to-r from-[#8B2F39] to-[#6B2027] rounded-full"></div>
+      </div>
+      
+      <!-- Title -->
+      <h1 class="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-6 leading-tight tracking-wide">
+        About Us
+      </h1>
+
+      <!-- Mission Statement -->
+      <p class="text-xl md:text-2xl lg:text-3xl text-maroon-100 font-light mb-8 italic leading-relaxed max-w-3xl mx-auto">
+        Serving our community with spiritual wisdom since 2017
+      </p>
+
+      <!-- Subtitle -->
+      <p class="text-lg md:text-xl text-maroon-100 mb-12 font-light max-w-2xl mx-auto">
+        Learn about our mission, values, and community impact
+      </p>
+    </div>
+
+    <!-- Scroll Down Indicator -->
+    <div class="mt-16 flex justify-center">
+      <div class="animate-bounce">
+        <svg
+          class="w-6 h-6 text-[#8B2F39]"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Decorative Bottom Curve -->
+    <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
+  </section>
+
+  <style>
+    section {
+      animation: fadeIn 0.8s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <!-- Our Foundation -->
+    <section class="mb-20">
+      <h2 class="text-3xl md:text-4xl font-serif font-bold text-maroon-900 mb-8">
+        Our Foundation
+      </h2>
+      <p class="text-lg text-maroon-800 mb-6">
+        <strong>Founded in 2017</strong>, Chinmaya Mission San Antonio (CMSA) is a non-profit educational and cultural organization dedicated to the spiritual and cultural renaissance of Hindu heritage. We are part of a worldwide movement of over 300 Chinmaya centers across 25+ countries, all inspired by the teachings of Revered Gurudev Swami Chinmayananda.
+      </p>
+      <p class="text-lg text-maroon-800 mb-8">
+        Our home is the historic <strong>Sharadamba Temple</strong>, established in 1984 as the mother temple of San Antonio, serving as a spiritual sanctuary for seekers of all ages and backgrounds.
+      </p>
+      
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-gradient-to-br from-maroon-50 to-maroon-50 p-8 rounded-lg border border-maroon-200 text-center">
+          <p class="text-4xl font-bold text-maroon-600 mb-2">2017</p>
+          <p class="font-serif font-bold text-maroon-900">Year Founded</p>
+        </div>
+        <div class="bg-gradient-to-br from-burgundy-50 to-red-50 p-8 rounded-lg border border-burgundy-200 text-center">
+          <p class="text-4xl font-bold text-burgundy-600 mb-2">300+</p>
+          <p class="font-serif font-bold text-burgundy-900">Centers Worldwide</p>
+        </div>
+        <div class="bg-gradient-to-br from-maroon-50 to-maroon-50 p-8 rounded-lg border border-maroon-200 text-center">
+          <p class="text-4xl font-bold text-maroon-600 mb-2">25+</p>
+          <p class="font-serif font-bold text-maroon-900">Countries Served</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Mission -->
+    <section class="mb-20 bg-gradient-to-r from-maroon-50 to-burgundy-50 p-12 rounded-lg border border-maroon-200">
+      <h2 class="text-3xl md:text-4xl font-serif font-bold text-maroon-900 mb-8 text-center">
+        Our Mission
+      </h2>
+      <p class="text-lg text-maroon-900 font-serif italic text-center mb-6">
+        "To give maximum happiness to maximum people for maximum time through spiritual wisdom and cultural programs."
+      </p>
+      <p class="text-maroon-800 text-center">
+        This guiding principle of Gurudev Swami Chinmayananda shapes everything we do, from our educational programs to our spiritual services.
+      </p>
+    </section>
+
+    <!-- Gurudev & Inspiration -->
+    <section class="mb-20">
+      <h2 class="text-3xl md:text-4xl font-serif font-bold text-maroon-900 mb-8">
+        Guided by Spiritual Wisdom
+      </h2>
+      <p class="text-lg text-maroon-800 mb-8">
+        The Chinmaya Mission worldwide movement is inspired by the transformative teachings of Revered Gurudev Swami Chinmayananda, a lighthouse of wisdom in the modern world. His message continues to guide us:
+      </p>
+      
+      <div class="bg-maroon-50 border-l-4 border-maroon-600 p-8 rounded mb-8">
+        <p class="text-maroon-900 font-serif italic text-lg mb-4">
+          "Until we discover this Spiritual Centre in ourselves, all the apparent happiness we seek in the outer world will prove to be only a plaything of the senses, not giving us lasting satisfaction or peace."
+        </p>
+        <p class="text-maroon-700 font-serif">— Swami Chinmayananda</p>
+      </div>
+
+      <p class="text-lg text-maroon-800">
+        We regularly host satsangs (spiritual gatherings), pujas (worship ceremonies), and educational programs rooted in the Vedantic philosophy that Gurudev championed throughout his lifetime.
+      </p>
+    </section>
+
+    <!-- Our Programs & Activities -->
+    <section class="mb-20">
+      <h2 class="text-3xl md:text-4xl font-serif font-bold text-maroon-900 mb-8">
+        Programs & Activities
+      </h2>
+      <p class="text-lg text-maroon-800 mb-8">
+        We offer programs for all ages and stages of spiritual development:
+      </p>
+
+      <div class="space-y-6">
+        <!-- Balavihar -->
+        <div class="bg-gradient-to-r from-maroon-50 to-maroon-50 p-8 rounded-lg border border-maroon-300">
+          <h3 class="text-xl font-serif font-bold text-maroon-900 mb-3">Balavihar (Children's Program)</h3>
+          <p class="text-maroon-800 mb-4">
+            Age 4-18: Cultural, spiritual, and moral education programs designed to instill values, celebrate Hindu heritage, and nurture spiritual growth in children and teenagers.
+          </p>
+          <p class="text-sm text-maroon-800 font-semibold">
+            Sundays during regular schedule
+          </p>
+        </div>
+
+        <!-- Adult Study Sessions -->
+        <div class="bg-gradient-to-r from-burgundy-50 to-red-50 p-8 rounded-lg border border-burgundy-300">
+          <h3 class="text-xl font-serif font-bold text-burgundy-900 mb-3">Adult Study Sessions</h3>
+          <p class="text-maroon-800 mb-4">
+            Vedantic wisdom sessions, scripture study in Sanskrit and English, meditation techniques, and discussions on applying spiritual teachings to modern life.
+          </p>
+          <p class="text-sm text-burgundy-800 font-semibold">
+            Weekly classes throughout the year
+          </p>
+        </div>
+
+        <!-- Pujas & Festivals -->
+        <div class="bg-gradient-to-r from-maroon-50 to-maroon-50 p-8 rounded-lg border border-maroon-300">
+          <h3 class="text-xl font-serif font-bold text-maroon-900 mb-3">Pujas & Festival Celebrations</h3>
+          <p class="text-maroon-800 mb-4">
+            Participate in sacred ceremonies throughout the year including Diwali, Navaratri, Mahasivaratri, and special puja services conducted with authentic Vedic rituals.
+          </p>
+          <p class="text-sm text-maroon-800 font-semibold">
+            Seasonal and special occasions
+          </p>
+        </div>
+
+        <!-- Community Service -->
+        <div class="bg-gradient-to-r from-maroon-50 to-burgundy-50 p-8 rounded-lg border border-maroon-200">
+          <h3 class="text-xl font-serif font-bold text-maroon-900 mb-3">Community Service</h3>
+          <p class="text-maroon-800 mb-4">
+            Regular community outreach, food drives, charitable initiatives, and service projects that embody our commitment to social welfare alongside spiritual development.
+          </p>
+          <p class="text-sm text-maroon-700 font-semibold">
+            Throughout the year
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="bg-gradient-to-r from-maroon-600 to-burgundy-600 text-white rounded-lg p-12 text-center">
+      <h2 class="text-3xl font-serif font-bold mb-4">Join Our Spiritual Community</h2>
+      <p class="text-lg mb-8 max-w-2xl mx-auto">
+        Whether you're seeking spiritual guidance, cultural connection, or community fellowship, there's a place for you at Chinmaya Mission San Antonio.
+      </p>
+      <a 
+        href="tel:+17262154913"
+        class="inline-flex items-center justify-center bg-maroon-50 text-maroon-700 hover:bg-maroon-50 font-serif font-bold py-3 px-8 rounded-lg transition"
+      >
+        Contact Us: (726) 215-4913
+      </a>
+    </section>
+  </div>
+</Layout>

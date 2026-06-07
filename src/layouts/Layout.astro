@@ -1,0 +1,120 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article';
+  author?: string;
+}
+
+const {
+  title = 'Chinmaya Mission San Antonio',
+  description = 'Experience spiritual wisdom and cultural offerings at Chinmaya Mission San Antonio (CMSA) - Sharadalaya. Programs for all ages, Vedanta studies, and community services.',
+  ogImage = 'https://chinmayasa.org/og-image.jpg',
+  ogType = 'website',
+  author = 'Chinmaya Mission San Antonio',
+} = Astro.props;
+
+const baseUrl = Astro.site || new URL('https://chinmayasa.org');
+const canonicalUrl = new URL(Astro.url.pathname, baseUrl);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Character Encoding & Viewport -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
+    <!-- Primary Meta Tags (SEO) -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="author" content={author} />
+    <meta name="keywords" content="Chinmaya Mission, San Antonio, spirituality, Vedanta, Hindu, culture, ashram, Sharadalaya, meditation, yoga, scriptures" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="English" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalUrl} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content={title} />
+    <meta property="og:site_name" content="Chinmaya Mission San Antonio" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalUrl} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImage} />
+    
+    <!-- Schema.org Structured Data (Organization) -->
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Chinmaya Mission San Antonio",
+        "url": "https://chinmayasa.org",
+        "logo": "https://chinmayasa.org/logo.png",
+        "sameAs": [
+          "https://www.facebook.com/chinmayasa",
+          "https://www.instagram.com/chinmayasa"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "9086 Vista Verde",
+          "addressLocality": "San Antonio",
+          "addressRegion": "TX",
+          "postalCode": "78250",
+          "addressCountry": "US"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "General Inquiries",
+          "telephone": "+1-726-215-4913",
+          "email": "info@chinmayasa.org"
+        },
+        "description": "Chinmaya Mission San Antonio (CMSA) dedicates itself to give maximum happiness to maximum people for maximum time through spiritual wisdom and cultural programs."
+      })}
+    </script>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="https://chinmayasa.org/favicon.ico" />
+    <link rel="apple-touch-icon" href="https://chinmayasa.org/apple-touch-icon.png" />
+    
+    <!-- Preconnect to External Resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Google Fonts - Elegant Serif & Modern Sans -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    
+  </head>
+  
+  <body class="flex flex-col min-h-screen">
+    <!-- Header Navigation -->
+    <Header />
+    
+    <!-- Main Content Slot -->
+    <main class="flex-grow">
+      <slot />
+    </main>
+    
+    <!-- Footer -->
+    <Footer />
+  </body>
+</html>

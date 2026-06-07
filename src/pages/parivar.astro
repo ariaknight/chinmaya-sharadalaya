@@ -1,0 +1,291 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = 'Chinmaya Parivar - Join Our Community';
+const description = 'Join Chinmaya Mission San Antonio community. Grow spiritually through Balavihar programs, Vedanta studies, temple services, and more.';
+---
+
+<Layout {title} {description}>
+  <!-- Hero Section -->
+  <section class="relative h-screen flex items-center justify-center overflow-hidden">
+    <!-- Background Image -->
+    <div
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+      style="background-image: url('https://images.unsplash.com/photo-1545056854-41a855fc8c64?w=1600&h=900&fit=crop');"
+    ></div>
+
+    <!-- Dark Gradient Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-r from-maroon-900/80 via-burgundy-900/70 to-maroon-900/80"></div>
+
+    <!-- Hero Content -->
+    <div class="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Decorative Top Element -->
+      <div class="mb-6 flex justify-center">
+        <div class="h-1 w-20 bg-gradient-to-r from-[#8B2F39] to-[#6B2027] rounded-full"></div>
+      </div>
+      
+      <!-- Title -->
+      <h1 class="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-6 leading-tight tracking-wide">
+        Chinmaya Parivar
+      </h1>
+
+      <!-- Mission Statement -->
+      <p class="text-xl md:text-2xl lg:text-3xl text-maroon-100 font-light mb-8 italic leading-relaxed max-w-3xl mx-auto">
+        Become a member. Grow spiritually. Maximize your happiness.
+      </p>
+
+      <!-- Subtitle -->
+      <p class="text-lg md:text-xl text-maroon-100 mb-12 font-light max-w-2xl mx-auto">
+        Join our spiritual family and experience community connection
+      </p>
+    </div>
+
+    <!-- Scroll Down Indicator -->
+    <div class="mt-16 flex justify-center">
+      <div class="animate-bounce">
+        <svg
+          class="w-6 h-6 text-[#8B2F39]"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Decorative Bottom Curve -->
+    <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
+  </section>
+
+  <style>
+    section {
+      animation: fadeIn 0.8s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <!-- Welcome -->
+    <section class="mb-20">
+      <div class="text-center mb-12">
+        <p class="text-2xl font-serif italic text-maroon-900 mb-4">
+          Hari Om and Namaste!
+        </p>
+        <p class="text-lg text-maroon-800 max-w-3xl mx-auto">
+          Greetings from Chinmaya Mission San Antonio (CMSA), known also as Chinmaya Sharadalaya. Since 2017, we have been serving the cause of Sanatana Dharma and Hindu Spirituality in the Greater San Antonio community.
+        </p>
+      </div>
+    </section>
+
+    <!-- Our Mission -->
+    <section class="mb-20 bg-gradient-to-r from-maroon-50 to-burgundy-50 p-12 rounded-lg border-2 border-maroon-200">
+      <h2 class="text-3xl md:text-4xl font-serif font-bold text-maroon-900 mb-8 text-center">
+        What is Chinmaya Parivar?
+      </h2>
+      <p class="text-lg text-maroon-800 text-center mb-6">
+        "Parivar" means family. Chinmaya Parivar is our spiritual family—a community of seekers committed to Sanatana Dharma, personal growth, and serving one another. When you join Chinmaya Parivar, you become part of a living tradition dedicated to spiritual excellence and cultural vitality.
+      </p>
+    </section>
+
+    <!-- Our Programs -->
+    <section class="mb-20">
+      <h2 class="text-3xl md:text-4xl font-serif font-bold text-maroon-900 mb-12 text-center">
+        Our Programs & Services
+      </h2>
+
+      <div class="space-y-8">
+        <!-- Balavihar Program -->
+        <div class="bg-gradient-to-br from-maroon-50 to-maroon-50 p-8 rounded-lg border-2 border-maroon-300">
+          <h3 class="text-2xl font-serif font-bold text-maroon-900 mb-4">Balavihar - Our Flagship Program</h3>
+          <p class="text-maroon-800 mb-4">
+            Balavihar is our flagship program, designed to educate our children about Sanatana Dharma as they progress from pre-K through high school. With a curriculum followed by Chinmaya Missions across the United States, Balavihar focuses on helping children build:
+          </p>
+          <ul class="space-y-2 ml-6 mb-4">
+            <li class="flex items-start">
+              <span class="text-maroon-600 mr-3 font-bold">✓</span>
+              <span class="text-maroon-800">A strong core of values</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-maroon-600 mr-3 font-bold">✓</span>
+              <span class="text-maroon-800">Mental and physical well-being</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-maroon-600 mr-3 font-bold">✓</span>
+              <span class="text-maroon-800">Character to lead a dharmic life</span>
+            </li>
+          </ul>
+          <p class="text-maroon-800 text-sm italic">
+            A dedicated team of volunteer teachers works diligently every week to nurture and empower our children.
+          </p>
+        </div>
+
+        <!-- Additional Classes -->
+        <div class="bg-gradient-to-br from-burgundy-50 to-red-50 p-8 rounded-lg border-2 border-burgundy-300">
+          <h3 class="text-2xl font-serif font-bold text-burgundy-900 mb-4">Enrichment Classes</h3>
+          <p class="text-maroon-800 mb-4">
+            In addition to regular Balavihar curriculum, CMSA offers specialized classes for children and adults:
+          </p>
+          <ul class="grid md:grid-cols-2 gap-4">
+            <li class="flex items-start">
+              <span class="text-burgundy-600 mr-3 text-xl">🕉️</span>
+              <span class="text-maroon-800"><strong>Geeta Chanting</strong> - Learn sacred verses</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-burgundy-600 mr-3 text-xl">📖</span>
+              <span class="text-maroon-800"><strong>Sanskrit Reading</strong> - Master the ancient language</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-burgundy-600 mr-3 text-xl">🎵</span>
+              <span class="text-maroon-800"><strong>Stotram Learning</strong> - Devotional hymn recitation</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-burgundy-600 mr-3 text-xl">🎶</span>
+              <span class="text-maroon-800"><strong>Music Lessons</strong> - Classical and devotional music</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Bhagavad Geeta Study -->
+        <div class="bg-gradient-to-br from-maroon-50 to-maroon-50 p-8 rounded-lg border-2 border-maroon-300">
+          <h3 class="text-2xl font-serif font-bold text-maroon-900 mb-4">Bhagavad Geeta Study Circle</h3>
+          <p class="text-maroon-800">
+            A dedicated study group meets regularly every <strong>Sunday after Balavihar</strong> to discuss and learn from the Bhagavad Geeta chapter-by-chapter. Open to people of all ages and experience levels, this group explores the timeless wisdom of Lord Krishna's teachings with guidance from experienced facilitators.
+          </p>
+        </div>
+
+        <!-- Temple Services -->
+        <div class="bg-gradient-to-br from-maroon-50 to-burgundy-50 p-8 rounded-lg border-2 border-maroon-200">
+          <h3 class="text-2xl font-serif font-bold text-maroon-900 mb-4">Sharadamba & Satyanarayana Swami Temple</h3>
+          <p class="text-maroon-800 mb-4">
+            CMSA is home to our beautiful temple, one of the oldest temples in South Texas. We have continuously served the devotee community for more than 40 years with:
+          </p>
+          <ul class="space-y-2 ml-6">
+            <li class="flex items-start">
+              <span class="text-maroon-600 mr-3 font-bold">•</span>
+              <span class="text-maroon-800">Regular pujas and sacred rituals</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-maroon-600 mr-3 font-bold">•</span>
+              <span class="text-maroon-800">Homam ceremonies</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-maroon-600 mr-3 font-bold">•</span>
+              <span class="text-maroon-800">Archana and special puja services</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-maroon-600 mr-3 font-bold">•</span>
+              <span class="text-maroon-800">Weekend and special occasion services</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Join Parivar -->
+    <section class="mb-20">
+      <h2 class="text-3xl md:text-4xl font-serif font-bold text-maroon-900 mb-12 text-center">
+        Why Join Chinmaya Parivar?
+      </h2>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-maroon-50 p-8 rounded-lg shadow-md border-t-4 border-maroon-600 hover:shadow-lg transition">
+          <div class="text-4xl mb-4">🌱</div>
+          <h3 class="text-xl font-serif font-bold text-maroon-900 mb-3">Spiritual Growth</h3>
+          <p class="text-maroon-800">
+            Access to wisdom teachings, guided practices, and a supportive community on your spiritual journey.
+          </p>
+        </div>
+
+        <div class="bg-maroon-50 p-8 rounded-lg shadow-md border-t-4 border-burgundy-600 hover:shadow-lg transition">
+          <div class="text-4xl mb-4">👨‍👩‍👧‍👦</div>
+          <h3 class="text-xl font-serif font-bold text-burgundy-900 mb-3">Family Community</h3>
+          <p class="text-maroon-800">
+            Connect with families who share your values and commitment to Sanatana Dharma and cultural renewal.
+          </p>
+        </div>
+
+        <div class="bg-maroon-50 p-8 rounded-lg shadow-md border-t-4 border-maroon-600 hover:shadow-lg transition">
+          <div class="text-4xl mb-4">🏛️</div>
+          <h3 class="text-xl font-serif font-bold text-maroon-900 mb-3">Sacred Services</h3>
+          <p class="text-maroon-800">
+            Participate in pujas, rituals, festivals, and sacred ceremonies at our historic temple.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Membership Info -->
+    <section class="mb-20 bg-gradient-to-r from-maroon-50 to-burgundy-50 p-12 rounded-lg border-2 border-maroon-300">
+      <h2 class="text-2xl md:text-3xl font-serif font-bold text-maroon-900 mb-6 text-center">
+        Membership Details
+      </h2>
+      <p class="text-lg text-maroon-800 mb-6">
+        Membership in Chinmaya Parivar is open to all who share our commitment to Sanatana Dharma and spiritual growth. Your membership supports our ongoing programs, temple maintenance, and community outreach.
+      </p>
+      <p class="text-maroon-800 mb-4">
+        <strong>After completing the membership process:</strong>
+      </p>
+      <ul class="space-y-2 ml-6 mb-6">
+        <li class="flex items-start">
+          <span class="text-maroon-600 mr-3 font-bold">✓</span>
+          <span class="text-maroon-800">You'll be redirected to the registration page</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-maroon-600 mr-3 font-bold">✓</span>
+          <span class="text-maroon-800">You'll receive a confirmation email with login credentials</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-maroon-600 mr-3 font-bold">✓</span>
+          <span class="text-maroon-800">Full access to all Parivar member benefits and programs</span>
+        </li>
+      </ul>
+      <p class="text-sm text-maroon-800 italic">
+        We are recognized as a tax-exempt organization under section 501(c)(3) of the United States Internal Revenue Service (IRS) tax code. Tax ID: 32-0531738. Contributions may be tax-deductible—please consult your tax professional.
+      </p>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="bg-gradient-to-r from-maroon-600 to-burgundy-600 text-white rounded-lg p-12 text-center">
+      <h2 class="text-3xl font-serif font-bold mb-4">Join Chinmaya Parivar Today</h2>
+      <p class="text-lg mb-8 max-w-2xl mx-auto">
+        We look forward to welcoming your family into our growing Chinmaya Community. Become part of a spiritual family dedicated to growth, wisdom, and service.
+      </p>
+      <a 
+        href="https://secure.givelively.org/donate/chinmaya-mission-san-antonio-cmsa"
+        target="_blank"
+        class="inline-flex items-center justify-center bg-maroon-50 text-maroon-700 hover:bg-maroon-50 font-serif font-bold py-3 px-8 rounded-lg transition shadow-lg"
+      >
+        Join the Parivar
+      </a>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="mt-20 text-center">
+      <h3 class="text-xl font-serif font-bold text-maroon-900 mb-6">Have Questions?</h3>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="tel:+17262154913"
+          class="inline-flex items-center justify-center text-maroon-600 hover:text-maroon-800 font-semibold"
+        >
+          📞 (726) 215-4913
+        </a>
+        <a 
+          href="mailto:info@chinmayasa.org"
+          class="inline-flex items-center justify-center text-maroon-600 hover:text-maroon-800 font-semibold"
+        >
+          ✉️ info@chinmayasa.org
+        </a>
+      </div>
+    </section>
+  </div>
+</Layout>

@@ -1,0 +1,138 @@
+/* Tailwind v4 */
+@import "tailwindcss";
+
+@layer theme {
+  :root {
+    --font-family-serif: 'Cormorant Garamond', serif;
+    --font-family-sans: 'Inter', sans-serif;
+    --color-maroon: #8B2F39;
+    --color-maroon-dark: #6B2027;
+    --color-burgundy: #A0373D;
+    --color-gold: #d4af37;
+    --color-cream: #faf5f0;
+  }
+}
+
+:root {
+  --primary-maroon: #8B2F39;
+  --primary-maroon-dark: #6B2027;
+  --secondary-burgundy: #A0373D;
+  --primary-gold: #d4af37;
+  --secondary-light: #faf5f4;
+  --accent-dark: #2d0a0e;
+  --text-dark: #4d1217;
+  --text-light: #8B2F39;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--text-dark);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--accent-dark);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+a {
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+header.sticky {
+  background-color: var(--secondary-light) !important;
+  border-bottom: 1px solid #ead7d1;
+  box-shadow: 0 2px 10px rgba(45, 10, 14, 0.08);
+  isolation: isolate;
+}
+
+header.sticky nav {
+  background-color: transparent;
+}
+
+a[class*="bg-maroon-50"][class*="text-maroon-700"],
+a[class*="bg-maroon-50"][class*="text-burgundy-700"],
+a[class*="bg-maroon-50"][class*="text-maroon-800"] {
+  color: var(--text-dark) !important;
+  background-color: var(--secondary-light) !important;
+  border: 1px solid #ead7d1;
+}
+
+/* Fix invisible text on light backgrounds - all opacity variants */
+a[class*="bg-maroon-50/"][class*="text-white"],
+a[class*="bg-maroon-50"][class*="text-white"],
+a[class*="bg-burgundy-50"][class*="text-white"],
+a[class*="bg-maroon-100"][class*="text-white"],
+a[class*="bg-burgundy-100"][class*="text-white"],
+a[class*="bg-white"][class*="text-white"],
+a[class*="bg-slate-50"][class*="text-white"],
+a[class*="bg-gray-50"][class*="text-white"],
+button[class*="bg-maroon-50/"][class*="text-white"],
+button[class*="bg-maroon-50"][class*="text-white"],
+button[class*="bg-burgundy-50"][class*="text-white"],
+button[class*="bg-maroon-100"][class*="text-white"],
+button[class*="bg-burgundy-100"][class*="text-white"],
+button[class*="bg-white"][class*="text-white"],
+button[class*="bg-slate-50"][class*="text-white"],
+button[class*="bg-gray-50"][class*="text-white"],
+div[class*="bg-maroon-50/"][class*="text-white"],
+div[class*="bg-maroon-50"][class*="text-white"],
+div[class*="bg-burgundy-50"][class*="text-white"],
+span[class*="bg-maroon-50/"][class*="text-white"],
+span[class*="bg-maroon-50"][class*="text-white"],
+span[class*="bg-burgundy-50"][class*="text-white"] {
+  color: var(--text-dark) !important;
+  background-color: var(--secondary-light) !important;
+  border: 1px solid #ead7d1;
+}
+
+a[class*="bg-maroon-50"][class*="text-maroon-700"]:hover,
+a[class*="bg-maroon-50"][class*="text-burgundy-700"]:hover,
+a[class*="bg-maroon-50"][class*="text-maroon-800"]:hover {
+  background-color: #f5ebe8 !important;
+  color: #4d1217 !important;
+}
+
+/* Hover states for light background fixes */
+a[class*="bg-maroon-50/"][class*="text-white"]:hover,
+a[class*="bg-maroon-50"][class*="text-white"]:hover,
+a[class*="bg-burgundy-50"][class*="text-white"]:hover,
+a[class*="bg-maroon-100"][class*="text-white"]:hover,
+a[class*="bg-burgundy-100"][class*="text-white"]:hover,
+a[class*="bg-white"][class*="text-white"]:hover,
+a[class*="bg-slate-50"][class*="text-white"]:hover,
+a[class*="bg-gray-50"][class*="text-white"]:hover,
+button[class*="bg-maroon-50/"][class*="text-white"]:hover,
+button[class*="bg-maroon-50"][class*="text-white"]:hover,
+button[class*="bg-burgundy-50"][class*="text-white"]:hover,
+button[class*="bg-maroon-100"][class*="text-white"]:hover,
+button[class*="bg-burgundy-100"][class*="text-white"]:hover,
+button[class*="bg-white"][class*="text-white"]:hover,
+button[class*="bg-slate-50"][class*="text-white"]:hover,
+button[class*="bg-gray-50"][class*="text-white"]:hover,
+div[class*="bg-maroon-50/"][class*="text-white"]:hover,
+div[class*="bg-maroon-50"][class*="text-white"]:hover,
+div[class*="bg-burgundy-50"][class*="text-white"]:hover,
+span[class*="bg-maroon-50/"][class*="text-white"]:hover,
+span[class*="bg-maroon-50"][class*="text-white"]:hover,
+span[class*="bg-burgundy-50"][class*="text-white"]:hover {
+  background-color: #f5ebe8 !important;
+  color: #4d1217 !important;
+}
+
+a[class*="hover:bg-purple-"]:hover {
+  background-color: #ebe3df !important;
+}
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--secondary-light); }
+::-webkit-scrollbar-thumb { background: var(--primary-maroon); border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: var(--primary-maroon-dark); }
