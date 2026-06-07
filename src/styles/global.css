@@ -1,16 +1,36 @@
 /* Tailwind v4 */
 @import "tailwindcss";
 
-@layer theme {
-  :root {
-    --font-family-serif: 'Cormorant Garamond', serif;
-    --font-family-sans: 'Inter', sans-serif;
-    --color-maroon: #8B2F39;
-    --color-maroon-dark: #6B2027;
-    --color-burgundy: #A0373D;
-    --color-gold: #d4af37;
-    --color-cream: #faf5f0;
-  }
+@theme {
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-sans: 'Inter', sans-serif;
+
+  --color-maroon-50: #faf5f4;
+  --color-maroon-100: #f5ebe8;
+  --color-maroon-200: #ead7d1;
+  --color-maroon-300: #e0c3ba;
+  --color-maroon-400: #d5afa3;
+  --color-maroon-500: #8B2F39;
+  --color-maroon-600: #7a2730;
+  --color-maroon-700: #6B2027;
+  --color-maroon-800: #5c1a1f;
+  --color-maroon-900: #4d1217;
+  --color-maroon-950: #2d0a0e;
+
+  --color-burgundy-50: #faf8f7;
+  --color-burgundy-100: #f5f1ef;
+  --color-burgundy-200: #ebe3df;
+  --color-burgundy-300: #e1d5cf;
+  --color-burgundy-400: #d7c7bf;
+  --color-burgundy-500: #A0373D;
+  --color-burgundy-600: #8a2f34;
+  --color-burgundy-700: #74272b;
+  --color-burgundy-800: #5e1f22;
+  --color-burgundy-900: #481719;
+  --color-burgundy-950: #2a0e10;
+
+  --color-gold: #d4af37;
+  --color-cream: #faf5f0;
 }
 
 :root {
