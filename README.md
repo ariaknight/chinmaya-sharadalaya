@@ -31,6 +31,8 @@ Build output is written to `dist/`.
 - This project uses Astro. See the Astro docs for advanced usage: https://docs.astro.build
 - Common files/directories to ignore are added to `.gitignore`: `dist/`, `.astro/`, `.playwright/`, and macOS `.DS_Store`.
 
+- **License:** Proprietary — Copyright © 2026 Chinmaya Sharadalaya. All rights reserved.
+
 If you'd like, I can add a short deploy section for your chosen hosting provider or include contributor/setup notes.
 
 ## Adding and Editing Pages
