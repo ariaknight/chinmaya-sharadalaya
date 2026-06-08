@@ -1,0 +1,36 @@
+---
+const donateUrl = 'https://secure.givelively.org/donate/chinmaya-mission-san-antonio-cmsa';
+---
+
+<section id="donate-hero" aria-label="Donate hero" class="bg-gradient-to-r from-maroon-50 to-burgundy-50">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24">
+    <div class="pt-20 sm:pt-0 text-center">
+      <h1 class="text-4xl md:text-5xl font-serif font-bold text-maroon-900 leading-tight">
+        Support Chinmaya Mission <span class="whitespace-nowrap">San Antonio</span>
+      </h1>
+      <p class="mt-4 text-lg text-maroon-800 max-w-3xl mx-auto">
+        Your gift sustains our spiritual education, Balavihar children’s programs, and campus growth. Join the Donor Tree and help our community thrive.
+      </p>
+
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a
+          href={donateUrl}
+          target="_blank"
+          rel="noopener"
+          aria-label="Make a donation via Givelively (opens in a new tab)"
+          class="inline-flex items-center justify-center bg-maroon-800 hover:bg-maroon-900 text-white font-serif font-bold py-3 px-8 rounded-lg focus:outline-none focus-visible:ring-4 focus-visible:ring-maroon-300 transition w-full sm:w-auto"
+        >
+          Make Your Donation Now
+        </a>
+
+        <a
+          href="mailto:info@chinmayasa.org"
+          aria-label="Contact us about donations"
+          class="inline-flex items-center justify-center bg-maroon-50 text-maroon-800 hover:bg-burgundy-50 font-serif font-bold py-3 px-6 rounded-lg transition w-full sm:w-auto"
+        >
+          Contact Us
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

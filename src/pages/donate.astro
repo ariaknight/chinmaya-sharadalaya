@@ -1,48 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import DonateHero from '../components/DonateHero.astro';
 
 const title = 'Donor Tree: Support CMSA - Chinmaya Mission San Antonio';
 const description = 'Join the Chinmaya Donor Tree and support three pillars of our mission: Jnanashakti, Balavihar programs, and campus expansion.';
 ---
 
 <Layout {title} {description}>
-  <!-- Hero Section -->
-  <section class="relative h-96 md:h-[32rem] flex items-center justify-center overflow-hidden bg-gradient-to-r from-[#6B2027] via-[#8B2F39] to-[#A0373D]" style="animation: fadeIn 0.8s ease-in;">
-    <!-- Hero Content -->
-    <div class="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <!-- Decorative Top Element -->
-      <div class="mb-6 flex justify-center">
-        <div class="h-1 w-20 bg-gradient-to-r from-[#8B2F39] to-[#A0373D] rounded-full"></div>
-      </div>
-      
-      <!-- Title -->
-      <h1 class="text-5xl md:text-6xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight tracking-wide">
-        Chinmaya Donor Tree
-      </h1>
-
-      <!-- Subtitle -->
-      <p class="text-lg md:text-xl lg:text-2xl text-[#f5f1ef] font-light mb-6 italic leading-relaxed max-w-3xl mx-auto">
-        Roots in Devotion, Branches in Love
-      </p>
-
-      <!-- Description -->
-      <p class="text-lg md:text-xl text-[#f5f1ef] mb-12 font-light max-w-2xl mx-auto">
-        Support our mission to spread spiritual wisdom
-      </p>
-    </div>
-
-    <!-- Scroll Down Indicator -->
-    <div class="absolute bottom-8 left-0 right-0 flex justify-center">
-      <div class="animate-bounce">
-        <svg class="w-6 h-6 text-[#d4af37]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-        </svg>
-      </div>
-    </div>
-
-    <!-- Decorative Bottom Curve -->
-    <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
-  </section>
+  <DonateHero />
 
   <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
     <!-- Legacy Story -->
@@ -156,8 +121,9 @@ const description = 'Join the Chinmaya Donor Tree and support three pillars of o
             </li>
           </ul>
           <a 
-            href="https://donate.givefullycharity.com"
+            href="https://secure.givelively.org/donate/chinmaya-mission-san-antonio-cmsa"
             target="_blank"
+            rel="noopener"
             class="w-full inline-flex items-center justify-center bg-maroon-800 hover:bg-maroon-900 text-white font-serif font-bold py-3 px-6 rounded-lg transition"
           >
             Make a Gift
@@ -189,8 +155,9 @@ const description = 'Join the Chinmaya Donor Tree and support three pillars of o
             </li>
           </ul>
           <a 
-            href="https://donate.givefullycharity.com"
+            href="https://secure.givelively.org/donate/chinmaya-mission-san-antonio-cmsa"
             target="_blank"
+            rel="noopener"
             class="w-full inline-flex items-center justify-center bg-maroon-600 hover:bg-maroon-700 text-white font-serif font-bold py-3 px-6 rounded-lg transition"
           >
             Make a Gift
@@ -222,8 +189,9 @@ const description = 'Join the Chinmaya Donor Tree and support three pillars of o
             </li>
           </ul>
           <a 
-            href="https://donate.givefullycharity.com"
+            href="https://secure.givelively.org/donate/chinmaya-mission-san-antonio-cmsa"
             target="_blank"
+            rel="noopener"
             class="w-full inline-flex items-center justify-center bg-maroon-700 hover:bg-maroon-800 text-white font-serif font-bold py-3 px-6 rounded-lg transition"
           >
             Make a Gift
@@ -255,8 +223,9 @@ const description = 'Join the Chinmaya Donor Tree and support three pillars of o
             </li>
           </ul>
           <a 
-            href="https://donate.givefullycharity.com"
+            href="https://secure.givelively.org/donate/chinmaya-mission-san-antonio-cmsa"
             target="_blank"
+            rel="noopener"
             class="w-full inline-flex items-center justify-center bg-burgundy-600 hover:bg-burgundy-700 text-white font-serif font-bold py-3 px-6 rounded-lg transition"
           >
             Make a Gift
@@ -362,13 +331,14 @@ const description = 'Join the Chinmaya Donor Tree and support three pillars of o
       <p class="text-lg mb-8 max-w-2xl mx-auto">
         Roots in Devotion, Branches in Love. Support the spiritual growth of our community today.
       </p>
-      <a 
-        href="https://donate.givefullycharity.com"
-        target="_blank"
-        class="inline-flex items-center justify-center bg-maroon-50 text-maroon-800 hover:bg-burgundy-50 font-serif font-bold py-3 px-8 rounded-lg transition shadow-lg"
-      >
-        Make Your Donation Now
-      </a>
+        <a 
+          href="https://secure.givelively.org/donate/chinmaya-mission-san-antonio-cmsa"
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center justify-center bg-maroon-50 text-maroon-800 hover:bg-burgundy-50 font-serif font-bold py-3 px-8 rounded-lg transition shadow-lg"
+        >
+          Make Your Donation Now
+        </a>
     </section>
   </div>
 </Layout>
