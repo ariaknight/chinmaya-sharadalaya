@@ -12,7 +12,7 @@ const events = await getCollection('events');
 const sortedEvents = events.sort((a, b) => a.data.order - b.data.order);
 ---
 
-<section class="py-16 bg-maroon-50">
+<section id="our-weekly-programs" class="py-16 bg-maroon-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Section Header -->
     <div class="text-center mb-12">
@@ -29,9 +29,6 @@ const sortedEvents = events.sort((a, b) => a.data.order - b.data.order);
       {
         sortedEvents.map((event) => (
           <article class="bg-maroon-50 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden group h-full flex flex-col">
-            <!-- Card Header with Color Accent -->
-            <div class="h-2 bg-gradient-to-r from-[#8B2F39] to-[#6B2027]"></div>
-
             <!-- Card Content -->
             <div class="p-6 flex flex-col flex-grow">
               <!-- Title -->
