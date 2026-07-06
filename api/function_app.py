@@ -154,6 +154,63 @@ def get_availability(req: func.HttpRequest) -> func.HttpResponse:
         return _build_response(500, {"error": str(e)})
 
 
+@app.route(route="events", methods=["GET"], auth_level=func.AuthLevel.ANONYMOUS)
+def list_events(req: func.HttpRequest) -> func.HttpResponse:
+    """
+    GET /api/events?month=2026-07
+    Returns events from the Google Calendar for the given month.
+    Response includes id, summary, description, start, end, attendees, htmlLink.
+    """
+    month = req.params.get("month")
+    if not month:
+        return _build_response(400, {"error": "Missing required query parameter: month (YYYY-MM)"})
+
+    try:
+        time_min, time_max = _parse_month_to_date_range(month)
+    except Exception:
+        return _build_response(400, {"error": "Invalid month format. Use YYYY-MM."})
+
+    if not CALENDAR_ID:
+        return _build_response(500, {"error": "Google Calendar ID not configured"})
+
+    try:
+        service = _get_calendar_service()
+        events_result = (
+            service.events()
+            .list(
+                calendarId=CALENDAR_ID,
+                timeMin=time_min,
+                timeMax=time_max,
+                singleEvents=True,
+                orderBy="startTime",
+            )
+            .execute()
+        )
+
+        items = events_result.get("items", [])
+        events: list[dict[str, Any]] = []
+        for item in items:
+            start = item.get("start", {})
+            end = item.get("end", {})
+            events.append(
+                {
+                    "id": item.get("id"),
+                    "summary": item.get("summary"),
+                    "description": item.get("description"),
+                    "start": start.get("dateTime") or start.get("date"),
+                    "end": end.get("dateTime") or end.get("date"),
+                    "attendees": item.get("attendees", []),
+                    "htmlLink": item.get("htmlLink"),
+                }
+            )
+
+        return _build_response(200, {"month": month, "events": events})
+    except HttpError as e:
+        return _build_response(502, {"error": f"Google Calendar API error: {e.reason}"})
+    except Exception as e:
+        return _build_response(500, {"error": str(e)})
+
+
 @app.route(route="bookings", methods=["POST"], auth_level=func.AuthLevel.ANONYMOUS)
 def create_booking(req: func.HttpRequest) -> func.HttpResponse:
     """

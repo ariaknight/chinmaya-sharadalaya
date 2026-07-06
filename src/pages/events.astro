@@ -1,0 +1,233 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Events | Chinmaya Mission San Antonio - Sharadalaya"
+  description="View upcoming events and CSP bookings at Chinmaya Sharadalaya. Select a month to see scheduled events pulled live from our calendar."
+>
+  <main>
+    <!-- Hero Section -->
+    <section class="relative h-[50vh] flex items-center justify-center bg-maroon-900">
+      <div class="absolute inset-0 bg-[url('/images/hero-bg.jpg')] bg-cover bg-center opacity-30"></div>
+      <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
+        <h1 class="text-5xl md:text-6xl font-serif font-bold text-white mb-4">
+          Upcoming Events
+        </h1>
+        <p class="text-xl text-maroon-100 max-w-2xl mx-auto">
+          Browse scheduled programs and CSP sessions. Data is pulled live from our Google Calendar.
+        </p>
+      </div>
+    </section>
+
+    <!-- Month Selector + Events Content -->
+    <section class="py-12 bg-maroon-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Controls -->
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
+          <div>
+            <h2 class="text-3xl md:text-4xl font-serif font-bold text-maroon-900 mb-2">
+              Calendar Events
+            </h2>
+            <p class="text-maroon-700">
+              Select a month to view scheduled events.
+            </p>
+          </div>
+
+          <div class="min-w-[220px]">
+            <label for="month-select" class="block text-sm font-medium text-maroon-700 mb-1">
+              Select Month
+            </label>
+            <select
+              id="month-select"
+              class="w-full px-4 py-2.5 bg-white border border-maroon-200 rounded-lg text-maroon-900 focus:outline-none focus:ring-2 focus:ring-[#8B2F39] focus:border-transparent"
+            >
+              <!-- Populated via JS -->
+            </select>
+          </div>
+        </div>
+
+        <!-- Loading State -->
+        <div id="loading" class="hidden text-center py-12">
+          <div class="inline-flex items-center px-4 py-2 bg-white rounded-lg shadow">
+            <svg class="animate-spin h-5 w-5 mr-3 text-[#8B2F39]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+            </svg>
+            <span class="text-maroon-700">Loading events...</span>
+          </div>
+        </div>
+
+        <!-- Error State -->
+        <div id="error" class="hidden bg-red-50 border border-red-200 text-red-700 px-6 py-4 rounded-lg mb-6">
+          <p class="font-medium">Unable to load events.</p>
+          <p id="error-message" class="text-sm mt-1"></p>
+        </div>
+
+        <!-- Empty State -->
+        <div id="empty" class="hidden text-center py-12 bg-white rounded-lg shadow">
+          <p class="text-maroon-600 text-lg">No events scheduled for this month.</p>
+          <p class="text-sm text-maroon-500 mt-1">Please try another month or check back later.</p>
+        </div>
+
+        <!-- Events Grid -->
+        <div id="events-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Populated via JS -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Generate month options: current month + 5 future months (6 total)
+    function generateMonthOptions() {
+      const select = document.getElementById('month-select') as HTMLSelectElement;
+      const now = new Date(2026, 6, 6); // 2026-07-06 (current date in context)
+      const months = ['January', 'February', 'March', 'April', 'May', 'June',
+                      'July', 'August', 'September', 'October', 'November', 'December'];
+
+      // Clear existing options
+      select.innerHTML = '';
+
+      for (let i = 0; i < 6; i++) {
+        const d = new Date(now.getFullYear(), now.getMonth() + i, 1);
+        const value = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+        const label = `${months[d.getMonth()]} ${d.getFullYear()}`;
+        const opt = document.createElement('option');
+        opt.value = value;
+        opt.textContent = label;
+        if (i === 0) opt.selected = true; // current month pre-selected
+        select.appendChild(opt);
+      }
+    }
+
+    // Format date/time for display
+    function formatEventTime(start: string, end: string): string {
+      try {
+        const s = new Date(start);
+        const e = new Date(end);
+        const dateStr = s.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
+        const timeStr = `${s.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })} – ${e.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}`;
+        return `${dateStr} • ${timeStr}`;
+      } catch {
+        return `${start} – ${end}`;
+      }
+    }
+
+    // Extract host info from attendees or description (best-effort)
+    function extractHostInfo(attendees: any[], description: string | null): string {
+      if (attendees && attendees.length > 0) {
+        const names = attendees.map(a => a.email || a.displayName).filter(Boolean).join(', ');
+        if (names) return names;
+      }
+      if (description) {
+        const match = description.match(/Host:\s*([^(\n]+)/i);
+        if (match) return match[1].trim();
+      }
+      return '';
+    }
+
+    // Fetch events for a given month
+    async function fetchEvents(month: string) {
+      const grid = document.getElementById('events-grid')!;
+      const loading = document.getElementById('loading')!;
+      const errorBox = document.getElementById('error')!;
+      const emptyBox = document.getElementById('empty')!;
+
+      grid.innerHTML = '';
+      errorBox.classList.add('hidden');
+      emptyBox.classList.add('hidden');
+      loading.classList.remove('hidden');
+
+      try {
+        const res = await fetch(`/api/events?month=${month}`);
+        if (!res.ok) {
+          const data = await res.json().catch(() => ({}));
+          throw new Error(data.error || `Request failed with status ${res.status}`);
+        }
+        const data = await res.json();
+        const events = data.events || [];
+
+        loading.classList.add('hidden');
+
+        if (events.length === 0) {
+          emptyBox.classList.remove('hidden');
+          return;
+        }
+
+        events.forEach((ev: any) => {
+          const card = document.createElement('article');
+          card.className = 'bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden group h-full flex flex-col';
+
+          const hostInfo = extractHostInfo(ev.attendees || [], ev.description || null);
+          const timeDisplay = formatEventTime(ev.start, ev.end);
+
+          card.innerHTML = `
+            <div class="p-6 flex flex-col flex-grow">
+              <h3 class="text-2xl font-serif font-bold text-maroon-900 mb-2 group-hover:text-[#8B2F39] transition-colors">
+                ${ev.summary || 'Untitled Event'}
+              </h3>
+
+              <div class="flex flex-wrap items-center gap-2 mb-4">
+                <span class="inline-flex items-center bg-[#8B2F39]/10 text-[#8B2F39] font-semibold px-3 py-1 rounded-full text-sm">
+                  ${timeDisplay}
+                </span>
+              </div>
+
+              ${hostInfo ? `
+                <div class="flex items-center text-maroon-700 mb-3">
+                  <svg class="w-4 h-4 mr-1.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                  <span class="text-sm">${hostInfo}</span>
+                </div>
+              ` : ''}
+
+              ${ev.description ? `
+                <p class="text-maroon-600 text-sm flex-grow mb-4 line-clamp-4">
+                  ${ev.description.replace(/\n/g, '<br>')}
+                </p>
+              ` : '<div class="flex-grow"></div>'}
+
+              ${ev.htmlLink ? `
+                <a href="${ev.htmlLink}" target="_blank" rel="noopener noreferrer"
+                   class="inline-flex items-center text-[#8B2F39] hover:text-maroon-900 font-medium text-sm mt-auto">
+                  View in Calendar
+                  <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2v-2m0-10a2 2 0 012-2m0 0l4 4m-4-4l4-4" />
+                  </svg>
+                </a>
+              ` : ''}
+            </div>
+          `;
+          grid.appendChild(card);
+        });
+      } catch (err: any) {
+        loading.classList.add('hidden');
+        const msgEl = document.getElementById('error-message')!;
+        msgEl.textContent = err.message || 'An unexpected error occurred.';
+        errorBox.classList.remove('hidden');
+      }
+    }
+
+    // Initialize page
+    function initEventsPage() {
+      const select = document.getElementById('month-select') as HTMLSelectElement;
+      generateMonthOptions();
+
+      // Load current month immediately
+      const initialMonth = select.value;
+      fetchEvents(initialMonth);
+
+      // Reload on month change
+      select.addEventListener('change', () => {
+        fetchEvents(select.value);
+      });
+    }
+
+    // Boot
+    if (typeof window !== 'undefined') {
+      initEventsPage();
+    }
+  </script>
+</Layout>
