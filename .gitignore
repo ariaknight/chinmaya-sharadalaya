@@ -6,40 +6,53 @@ dist
 
 build-plan.md
 
-# Azure Functions / Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
+# ==========================================
+# .NET / C# Azure Functions (Isolated Worker)
+# ==========================================
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
 
-# Virtual environments
-.venv
-venv/
-ENV/
-env/
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+!packages/build/
+*.nuget.props
+*.nuget.targets
 
 # Azure Functions specific
 local.settings.json
 .azure-functions/
-.funcignore
+wwwroot/
 
-# IDE
+# Secrets / credentials (never commit)
+**/service-account.json
+**/service_account.json
+**/credentials.json
+**/google-credentials*.json
+
+# IDE / tooling
 .vscode/
 .idea/
+*.vspscc
+*.vssscc
+
+# OS / misc
+.DS_Store
+Thumbs.db

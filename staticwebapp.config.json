@@ -1,5 +1,5 @@
 {
   "platform": {
-    "apiRuntime": "python:3.11"
+    "apiRuntime": "dotnet:8.0"
   }
 }
