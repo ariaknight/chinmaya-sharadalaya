@@ -85,6 +85,7 @@ public class EventsFunction
                     description = item.Description,
                     start,
                     end,
+                    location = item.Location,
                     attendees = item.Attendees ?? new List<EventAttendee>(),
                     htmlLink = item.HtmlLink
                 });

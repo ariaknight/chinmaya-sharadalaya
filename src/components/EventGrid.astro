@@ -1,15 +1,6 @@
 ---
-// EventGrid.astro - Dynamic event layout component
-// Features:
-// - Fetches all items from the events collection
-// - Sorts chronologically by order property
-// - Responsive grid layout (1 col mobile, 2 col tablet, 3 col desktop)
-// - Styled event cards with shadows and details
-
-import { getCollection } from 'astro:content';
-
-const events = await getCollection('events');
-const sortedEvents = events.sort((a, b) => a.data.order - b.data.order);
+// EventGrid.astro - Dynamic weekly programs fetched from Google Calendar API
+// Reuses the same card layout (Title, Timings, Location, optional Host/Description)
 ---
 
 <section id="our-weekly-programs" class="py-16 bg-maroon-50">
@@ -24,111 +15,32 @@ const sortedEvents = events.sort((a, b) => a.data.order - b.data.order);
       </p>
     </div>
 
+    <!-- Loading State -->
+    <div id="weekly-loading" class="hidden text-center py-12">
+      <div class="inline-flex items-center px-4 py-2 bg-white rounded-lg shadow">
+        <svg class="animate-spin h-5 w-5 mr-3 text-[#8B2F39]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+        </svg>
+        <span class="text-maroon-700">Loading weekly programs...</span>
+      </div>
+    </div>
+
+    <!-- Error State -->
+    <div id="weekly-error" class="hidden bg-red-50 border border-red-200 text-red-700 px-6 py-4 rounded-lg mb-6 text-center">
+      <p class="font-medium">Unable to load weekly programs.</p>
+      <p id="weekly-error-message" class="text-sm mt-1"></p>
+    </div>
+
+    <!-- Empty State -->
+    <div id="weekly-empty" class="hidden text-center py-12 bg-white rounded-lg shadow">
+      <p class="text-maroon-600 text-lg">No programs scheduled this month.</p>
+      <p class="text-sm text-maroon-500 mt-1">Please check back later or view the full calendar.</p>
+    </div>
+
     <!-- Events Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {
-        sortedEvents.map((event) => (
-          <article class="bg-maroon-50 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden group h-full flex flex-col">
-            <!-- Card Content -->
-            <div class="p-6 flex flex-col flex-grow">
-              <!-- Title -->
-              <h3 class="text-2xl font-serif font-bold text-maroon-900 mb-2 group-hover:text-[#8B2F39] transition-colors">
-                {event.data.title}
-              </h3>
-
-              <!-- Day & Time Badge -->
-              <div class="flex flex-wrap items-center gap-2 mb-4">
-                <span class="inline-flex items-center bg-[#8B2F39]/10 text-[#8B2F39] font-semibold px-3 py-1 rounded-full text-sm">
-                  {event.data.dayOfWeek}
-                </span>
-                <span class="inline-flex items-center bg-maroon-100 text-maroon-800 font-medium px-3 py-1 rounded-full text-sm">
-                  <svg
-                    class="w-4 h-4 mr-1 flex-shrink-0"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                    ></path>
-                  </svg>
-                  {event.data.time}
-                </span>
-              </div>
-
-              <!-- Location -->
-              <div class="flex items-start mb-4 text-maroon-700">
-                <svg
-                  class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0 text-[#8B2F39]"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  stroke-width="2"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                  ></path>
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                  ></path>
-                </svg>
-                <span class="text-sm">{event.data.location}</span>
-              </div>
-
-              <!-- Instructor (if available) -->
-              {event.data.instructor && (
-                <div class="flex items-center mb-4 text-maroon-700">
-                  <svg
-                    class="w-5 h-5 mr-2 flex-shrink-0 text-[#8B2F39]"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                    ></path>
-                  </svg>
-                  <span class="text-sm font-medium">{event.data.instructor}</span>
-                </div>
-              )}
-
-              <!-- Description -->
-              {event.data.description && (
-                <p class="text-maroon-800 text-sm leading-relaxed mb-4 flex-grow">
-                  {event.data.description}
-                </p>
-              )}
-
-              <!-- Learn More Link -->
-              <a
-                href={`/events/${event.slug}`}
-                class="inline-flex items-center text-[#8B2F39] hover:text-[#6B2027] font-semibold text-sm mt-auto transition-colors group"
-              >
-                Learn More
-                <svg
-                  class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  stroke-width="2"
-                >
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-                </svg>
-              </a>
-            </div>
-          </article>
-        ))
-      }
+    <div id="weekly-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Populated via JS -->
     </div>
 
     <!-- Call to Action -->
@@ -145,6 +57,129 @@ const sortedEvents = events.sort((a, b) => a.data.order - b.data.order);
     </div>
   </div>
 </section>
+
+<script>
+  // Format date/time for display (reused from events page)
+  function formatEventTime(start: string, end: string): string {
+    try {
+      const s = new Date(start);
+      const e = new Date(end);
+      const dateStr = s.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
+      const timeStr = `${s.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })} – ${e.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}`;
+      return `${dateStr} • ${timeStr}`;
+    } catch {
+      return `${start} – ${end}`;
+    }
+  }
+
+  // Extract host info from attendees or description
+  function extractHostInfo(attendees: any[], description: string | null): string {
+    if (attendees && attendees.length > 0) {
+      const names = attendees.map(a => a.email || a.displayName).filter(Boolean).join(', ');
+      if (names) return names;
+    }
+    if (description) {
+      const match = description.match(/Host:\s*([^(\n]+)/i);
+      if (match) return match[1].trim();
+    }
+    return '';
+  }
+
+  // Fetch and render weekly programs for current month
+  async function loadWeeklyPrograms() {
+    const grid = document.getElementById('weekly-grid')!;
+    const loading = document.getElementById('weekly-loading')!;
+    const errorBox = document.getElementById('weekly-error')!;
+    const emptyBox = document.getElementById('weekly-empty')!;
+
+    grid.innerHTML = '';
+    errorBox.classList.add('hidden');
+    emptyBox.classList.add('hidden');
+    loading.classList.remove('hidden');
+
+    try {
+      // Compute current month (YYYY-MM)
+      const now = new Date();
+      const month = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
+
+      const res = await fetch(`/api/events?month=${month}`);
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || `Request failed with status ${res.status}`);
+      }
+      const data = await res.json();
+      const events = data.events || [];
+
+      loading.classList.add('hidden');
+
+      if (events.length === 0) {
+        emptyBox.classList.remove('hidden');
+        return;
+      }
+
+      events.forEach((ev: any) => {
+        const card = document.createElement('article');
+        card.className = 'bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden group h-full flex flex-col';
+
+        const hostInfo = extractHostInfo(ev.attendees || [], ev.description || null);
+        const timeDisplay = formatEventTime(ev.start, ev.end);
+
+        card.innerHTML = `
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="text-2xl font-serif font-bold text-maroon-900 mb-2 group-hover:text-[#8B2F39] transition-colors">
+              ${ev.summary || 'Untitled Event'}
+            </h3>
+
+            <div class="flex flex-wrap items-center gap-2 mb-3">
+              <span class="inline-flex items-center bg-[#8B2F39]/10 text-[#8B2F39] font-semibold px-3 py-1 rounded-full text-sm">
+                ${timeDisplay}
+              </span>
+            </div>
+
+            ${ev.location ? `
+              <div class="flex items-center text-maroon-700 mb-3">
+                <svg class="w-4 h-4 mr-1.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314-11.314z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <span class="text-sm">${ev.location}</span>
+              </div>
+            ` : ''}
+
+            ${hostInfo ? `
+              <div class="flex items-center text-maroon-700 mb-3">
+                <svg class="w-4 h-4 mr-1.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+                <span class="text-sm">${hostInfo}</span>
+              </div>
+            ` : ''}
+
+            ${ev.description ? `
+              <p class="text-maroon-600 text-sm flex-grow mb-4 line-clamp-4">
+                ${ev.description.replace(/\n/g, '<br>')}
+              </p>
+            ` : '<div class="flex-grow"></div>'}
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    } catch (err: any) {
+      loading.classList.add('hidden');
+      const msgEl = document.getElementById('weekly-error-message')!;
+      msgEl.textContent = err.message || 'An unexpected error occurred.';
+      errorBox.classList.remove('hidden');
+    }
+  }
+
+  // Initialize on client
+  if (typeof window !== 'undefined') {
+    // Use setTimeout to ensure DOM is ready
+    setTimeout(() => {
+      loadWeeklyPrograms();
+    }, 0);
+  }
+</script>
 
 <style>
   article {

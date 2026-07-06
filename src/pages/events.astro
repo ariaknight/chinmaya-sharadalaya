@@ -168,11 +168,21 @@ import Layout from '../layouts/Layout.astro';
                 ${ev.summary || 'Untitled Event'}
               </h3>
 
-              <div class="flex flex-wrap items-center gap-2 mb-4">
+              <div class="flex flex-wrap items-center gap-2 mb-3">
                 <span class="inline-flex items-center bg-[#8B2F39]/10 text-[#8B2F39] font-semibold px-3 py-1 rounded-full text-sm">
                   ${timeDisplay}
                 </span>
               </div>
+
+              ${ev.location ? `
+                <div class="flex items-center text-maroon-700 mb-3">
+                  <svg class="w-4 h-4 mr-1.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314-11.314z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  <span class="text-sm">${ev.location}</span>
+                </div>
+              ` : ''}
 
               ${hostInfo ? `
                 <div class="flex items-center text-maroon-700 mb-3">
@@ -188,16 +198,6 @@ import Layout from '../layouts/Layout.astro';
                   ${ev.description.replace(/\n/g, '<br>')}
                 </p>
               ` : '<div class="flex-grow"></div>'}
-
-              ${ev.htmlLink ? `
-                <a href="${ev.htmlLink}" target="_blank" rel="noopener noreferrer"
-                   class="inline-flex items-center text-[#8B2F39] hover:text-maroon-900 font-medium text-sm mt-auto">
-                  View in Calendar
-                  <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2v-2m0-10a2 2 0 012-2m0 0l4 4m-4-4l4-4" />
-                  </svg>
-                </a>
-              ` : ''}
             </div>
           `;
           grid.appendChild(card);
