@@ -185,7 +185,7 @@ const description = 'Learn about hosting a Chinmaya Satyanarayana Pooja ceremony
           id="open-csp-modal"
           class="inline-flex items-center justify-center bg-maroon-50 text-maroon-700 hover:bg-white font-serif font-bold py-3 px-8 rounded-lg transition"
         >
-          Book a CSP
+          Register for CSP
         </button>
         <a 
           href="tel:+17262154913"
@@ -202,7 +202,10 @@ const description = 'Learn about hosting a Chinmaya Satyanarayana Pooja ceremony
     <div class="bg-white rounded-xl shadow-2xl w-full max-w-lg overflow-hidden">
       <!-- Modal Header -->
       <div class="flex items-center justify-between px-6 py-4 border-b border-maroon-200">
-        <h3 class="text-2xl font-serif font-bold text-maroon-900">Book a CSP</h3>
+        <div>
+          <h3 class="text-2xl font-serif font-bold text-maroon-900">Register for a CSP</h3>
+          <p class="text-sm text-maroon-600 mt-1">Choose a Saturday and time slot to reserve your ceremony.</p>
+        </div>
         <button id="close-csp-modal" class="text-maroon-500 hover:text-maroon-900 transition" aria-label="Close">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6h12v12" />
@@ -221,25 +224,14 @@ const description = 'Learn about hosting a Chinmaya Satyanarayana Pooja ceremony
             class="w-full px-4 py-2.5 border border-maroon-200 rounded-lg text-maroon-900 focus:outline-none focus:ring-2 focus:ring-[#8B2F39] focus:border-transparent"
             required
           />
-          <p id="date-error" class="hidden text-sm text-red-600 mt-1">Please select a Saturday.</p>
+          <p id="date-error" class="hidden text-sm text-red-600 mt-1">Please select a Saturday within the next 3 months.</p>
         </div>
 
-        <!-- Time Slot -->
+        <!-- Time -->
         <div>
-          <span class="block text-sm font-semibold text-maroon-700 mb-1.5">Select Time Slot</span>
-          <div class="flex flex-col sm:flex-row gap-3">
-            <label class="flex-1 cursor-pointer">
-              <input type="radio" name="timeSlot" value="10:30-12:00" class="peer sr-only" required />
-              <div class="px-4 py-3 border border-maroon-200 rounded-lg text-center peer-checked:border-[#8B2F39] peer-checked:bg-[#8B2F39]/10 peer-checked:text-[#8B2F39] transition">
-                <span class="font-semibold">10:30 AM – 12:00 PM</span>
-              </div>
-            </label>
-            <label class="flex-1 cursor-pointer">
-              <input type="radio" name="timeSlot" value="16:00-17:30" class="peer sr-only" required />
-              <div class="px-4 py-3 border border-maroon-200 rounded-lg text-center peer-checked:border-[#8B2F39] peer-checked:bg-[#8B2F39]/10 peer-checked:text-[#8B2F39] transition">
-                <span class="font-semibold">4:00 PM – 5:30 PM</span>
-              </div>
-            </label>
+          <span class="block text-sm font-semibold text-maroon-700 mb-1.5">Time</span>
+          <div class="rounded-lg border border-maroon-200 bg-maroon-50 px-4 py-3 text-sm text-maroon-800">
+            All CSP registrations are scheduled for 4:00 PM – 5:30 PM.
           </div>
         </div>
 
@@ -256,7 +248,7 @@ const description = 'Learn about hosting a Chinmaya Satyanarayana Pooja ceremony
             />
           </div>
           <div>
-            <label for="host-email" class="block text-sm font-semibold text-maroon-700 mb-1.5">Email Address</label>
+            <label for="host-email" class="block text-sm font-semibold text-maroon-700 mb-1.5">Contact Email</label>
             <input
               type="email"
               id="host-email"
@@ -308,7 +300,7 @@ const description = 'Learn about hosting a Chinmaya Satyanarayana Pooja ceremony
             id="submit-booking"
             class="flex-1 px-6 py-3 bg-[#8B2F39] hover:bg-[#6B2027] text-white font-semibold rounded-lg shadow transition disabled:opacity-60 disabled:cursor-not-allowed"
           >
-            Submit Booking
+            Register CSP
           </button>
         </div>
       </form>
@@ -365,18 +357,43 @@ const description = 'Learn about hosting a Chinmaya Satyanarayana Pooja ceremony
       }
     });
 
-    // Validate date is a Saturday
+    function isValidCspDate(value: string) {
+      if (!value) return false;
+
+      const selected = new Date(value + 'T00:00:00');
+      const day = selected.getDay();
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      const maxAllowed = new Date(today);
+      maxAllowed.setMonth(maxAllowed.getMonth() + 3);
+
+      return day === 6 && selected >= today && selected <= maxAllowed;
+    }
+
+    function setDateError(message: string) {
+      dateError.textContent = message;
+      dateError.classList.remove('hidden');
+    }
+
+    // Validate date is a Saturday and within the allowed window
     dateInput.addEventListener('change', () => {
       dateError.classList.add('hidden');
       if (!dateInput.value) return;
 
-      const selected = new Date(dateInput.value + 'T00:00:00');
-      const day = selected.getDay(); // 0=Sun, 6=Sat
-      if (day !== 6) {
-        dateError.classList.remove('hidden');
+      if (!isValidCspDate(dateInput.value)) {
+        setDateError('Please select a Saturday within the next 3 months.');
         dateInput.value = '';
       }
     });
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const maxAllowed = new Date(today);
+    maxAllowed.setMonth(maxAllowed.getMonth() + 3);
+
+    dateInput.min = today.toISOString().split('T')[0];
+    dateInput.max = maxAllowed.toISOString().split('T')[0];
 
     // Form submission -> POST /api/bookings
     form.addEventListener('submit', async (e) => {
@@ -386,14 +403,14 @@ const description = 'Learn about hosting a Chinmaya Satyanarayana Pooja ceremony
       errorMsg.classList.add('hidden');
 
       const date = dateInput.value;
-      const timeSlot = (form.querySelector('input[name="timeSlot"]:checked') as HTMLInputElement)?.value;
+      const timeSlot = '16:00-17:30';
       const name = (document.getElementById('host-name') as HTMLInputElement).value.trim();
       const email = (document.getElementById('host-email') as HTMLInputElement).value.trim();
       const phone = (document.getElementById('host-phone') as HTMLInputElement).value.trim();
       const notes = (document.getElementById('notes') as HTMLTextAreaElement).value.trim();
 
-      if (!date || !timeSlot) {
-        errorMsg.textContent = 'Please select a date and time slot.';
+      if (!date) {
+        errorMsg.textContent = 'Please select a Saturday.';
         errorMsg.classList.remove('hidden');
         return;
       }
@@ -418,7 +435,7 @@ const description = 'Learn about hosting a Chinmaya Satyanarayana Pooja ceremony
 
         const data = await res.json().catch(() => ({}));
 
-        if (res.status === 201) {
+        if (res.ok) {
           successMsg.classList.remove('hidden');
           // Auto-close after success
           setTimeout(() => {
