@@ -40,6 +40,12 @@ public class EventsFunction
         return true;
     }
 
+    private static bool ShouldHideLocation(string? title)
+    {
+        return !string.IsNullOrWhiteSpace(title) &&
+               title.Contains("Satyanarayana Pooja", StringComparison.OrdinalIgnoreCase);
+    }
+
     [Function("events")]
     public async Task<HttpResponseData> Run(
         [HttpTrigger(AuthorizationLevel.Anonymous, "get")] HttpRequestData req)
@@ -78,16 +84,15 @@ public class EventsFunction
                 var start = item.Start?.DateTimeDateTimeOffset?.UtcDateTime.ToString("o") ?? item.Start?.Date;
                 var end = item.End?.DateTimeDateTimeOffset?.UtcDateTime.ToString("o") ?? item.End?.Date;
 
+                var location = ShouldHideLocation(item.Summary) ? null : item.Location;
+
                 events.Add(new
                 {
                     id = item.Id,
                     summary = item.Summary,
-                    description = item.Description,
                     start,
                     end,
-                    location = item.Location,
-                    attendees = item.Attendees ?? new List<EventAttendee>(),
-                    htmlLink = item.HtmlLink
+                    location
                 });
             }
 
