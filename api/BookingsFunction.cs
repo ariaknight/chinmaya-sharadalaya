@@ -107,8 +107,9 @@ public class BookingsFunction
                 Summary = $"{payload.EventType} – {payload.Host.Name}",
                 Description = $"Event Type: {payload.EventType}\nHost: {payload.Host.Name} ({payload.Host.Email}, {payload.Host.Phone})\nNotes: {payload.Notes}".Trim(),
                 Start = new EventDateTime { DateTimeDateTimeOffset = startDt, TimeZone = "UTC" },
-                End = new EventDateTime { DateTimeDateTimeOffset = endDt, TimeZone = "UTC" },
-                Attendees = new List<EventAttendee> { new() { Email = payload.Host.Email } }
+                End = new EventDateTime { DateTimeDateTimeOffset = endDt, TimeZone = "UTC" }
+                // Note: Attendees intentionally omitted — service accounts cannot invite attendees
+                // without Domain-Wide Delegation. Host info is stored in the Description instead.
             };
 
             var insertRequest = service.Events.Insert(newEvent, calendarId);
